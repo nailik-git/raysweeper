@@ -35,7 +35,6 @@ void populate_grid(game* game) {
   for(int i = 0; i < game->GRID_HEIGHT; i++) {
     for(int j = 0; j < game->GRID_WIDTH; j++) {
       if(game->visual_grid[i][j]) {
-        TraceLog(LOG_INFO, "%d,%d\n", i, j);
         game-> grid[i][j] = 10;
         continue;
       }
@@ -52,7 +51,6 @@ void populate_grid(game* game) {
                   b += game->visual_grid[i + 1][j];     // bottom
         if(j < game->GRID_HEIGHT - 1) b += game->visual_grid[i + 1][j + 1]; // bottom right
       }
-      TraceLog(LOG_INFO, "%d,%d: %d", i, j, b);
       game-> grid[i][j] = b;
     }
   }
@@ -100,7 +98,6 @@ void end_game(game* game, int i, int j) {
 }
 
 void update_status(game* game, int i, int j, bool r) {
-  if(!r) TraceLog(LOG_INFO, "%d, %d", i, j);
   if(i < 0 || i >= game->GRID_HEIGHT || j < 0 || j >= game->GRID_WIDTH) return;
   if(game->visual_grid[i][j] == 12 || game->visual_grid[i][j] == 0) return;
   else if(1 <= game->visual_grid[i][j] && game->visual_grid[i][j] <= 8 && !r) {
