@@ -46,10 +46,10 @@ void populate_grid(game* game) {
       }
       if(j)     b += game->visual_grid[i][j - 1];       // left
       if(j < game->GRID_WIDTH - 1) b += game->visual_grid[i][j + 1];       // right
-      if(i < game->GRID_WIDTH - 1) {
+      if(i < game->GRID_HEIGHT - 1) {
         if(j)     b += game->visual_grid[i + 1][j - 1]; // bottom left
                   b += game->visual_grid[i + 1][j];     // bottom
-        if(j < game->GRID_HEIGHT - 1) b += game->visual_grid[i + 1][j + 1]; // bottom right
+        if(j < game->GRID_WIDTH - 1) b += game->visual_grid[i + 1][j + 1]; // bottom right
       }
       game-> grid[i][j] = b;
     }
